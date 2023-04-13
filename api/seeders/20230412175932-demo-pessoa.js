@@ -1,48 +1,53 @@
-"use strict";
-
-/** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
-    await queryInterface.bulkInsert(
+  up: (queryInterface, Sequelize) => {
+    return queryInterface.bulkInsert(
       "Pessoas",
       [
         {
           nome_pes: "Ana Souza",
           ativo_pes: true,
-          email_pes: "ana@gmail.com",
-          role_pes: "Estudante",
+          email_pes: "ana@ana.com",
+          role_pes: "estudante",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           nome_pes: "Marcos Cintra",
           ativo_pes: true,
-          email_pes: "marcos@gmail.com",
-          role_pes: "Estudante",
+          email_pes: "marcos@marcos.com",
+          role_pes: "estudante",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          nome_pes: "Alexandra de Oliveira Carvalho",
+          nome_pes: "Felipe Cardoso",
           ativo_pes: true,
-          email_pes: "alexandra@gmail.com",
-          role_pes: "Estudante",
+          email_pes: "felipe@felipe.com",
+          role_pes: "estudante",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          nome_pes: "Vanderlei Silva",
-          ativo_pes: true,
-          email_pes: "vanderlei@gmail.com",
-          role_pes: "Docente",
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          nome_pes: "Rosa de Oliveira",
+          nome_pes: "Sandra Gomes",
           ativo_pes: false,
-          email_pes: "rosa@gmail.com",
-          role_pes: "Docente",
+          email_pes: "sandra@sandra.com",
+          role_pes: "estudante",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          nome_pes: "Paula Morais",
+          ativo_pes: true,
+          email_pes: "paula@paula.com",
+          role_pes: "docente",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          nome_pes: "Sergio Lopes",
+          ativo_pes: true,
+          email_pes: "sergio@sergio.com",
+          role_pes: "docente",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -51,7 +56,7 @@ module.exports = {
     );
   },
 
-  async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete("Pessoas", null, {});
+  down: (queryInterface, Sequelize) => {
+    return queryInterface.bulkDelete("Pessoas", null, {});
   },
 };
