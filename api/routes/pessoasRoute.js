@@ -8,6 +8,7 @@ router.get("/pessoas/:id", PessoaController.listById);
 router.post("/pessoas", PessoaController.register);
 router.put("/pessoas/:id", PessoaController.update);
 router.delete("/pessoas/:id", PessoaController.delete);
+router.post("/pessoas/:id/restaura", PessoaController.restore);
 
 router.get(
   "/pessoas/:estudanteId/matricula/:matriculaId",
@@ -24,6 +25,10 @@ router.put(
 router.delete(
   "/pessoas/:estudanteId/matricula/:matriculaId",
   PessoaController.deleteMatricula
+);
+router.post(
+  "/pessoas/:estudanteId/matricula/:matriculaId/restaura",
+  PessoaController.restoreMatricula
 );
 
 module.exports = router;

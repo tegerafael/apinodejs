@@ -24,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       role_pes: DataTypes.STRING,
     },
     {
+      paranoid: true,
       sequelize,
       modelName: "Pessoas",
     }

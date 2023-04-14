@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       status_mat: DataTypes.STRING,
     },
     {
+      paranoid: true,
       sequelize,
       modelName: "Matriculas",
     }

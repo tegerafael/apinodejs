@@ -58,6 +58,18 @@ class PessoaController {
     }
   }
 
+  static async restore(req, res) {
+    const { id } = req.params;
+    try {
+      await database.Pessoas.restore({ where: { id: Number(id) } });
+      return res
+        .status(200)
+        .json({ message: `Pessoa com id ${id} restaurado com sucesso` });
+    } catch (error) {
+      return res.status(500).json(error.message);
+    }
+  }
+
   static async listMatricula(req, res) {
     const { estudanteId, matriculaId } = req.params;
     try {
@@ -102,11 +114,27 @@ class PessoaController {
   static async deleteMatricula(req, res) {
     const { estudanteId, matriculaId } = req.params;
     try {
-      await database.Matriculas.destroy({ where: { id: Number(matriculaId) } });
+      await database.Matriculas.destroy({
+        where: { id: Number(matriculaId), estudante_id: Number(estudanteId) },
+      });
+      return res.status(200).json({
+        message: `Matricula com o id ${matriculaId} excluído com sucesso`,
+      });
+    } catch (error) {
+      return res.status(500).json(error.message);
+    }
+  }
+
+  static async restoreMatricula(req, res) {
+    const { estudanteId, matriculaId } = req.params;
+    try {
+      await database.Matriculas.restore({
+        where: { id: Number(matriculaId), estudante_id: Number(estudanteId) },
+      });
       return res
         .status(200)
         .json({
-          message: `Matricula com o id ${matriculaId} excluído com sucesso`,
+          mensagem: `Matricula com o id ${matriculaId} restaurado com sucesso`,
         });
     } catch (error) {
       return res.status(500).json(error.message);
