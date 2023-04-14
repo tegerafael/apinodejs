@@ -1,9 +1,18 @@
 const database = require("../models");
 
 class PessoaController {
-  static async list(req, res) {
+  static async listAtivos(req, res) {
     try {
       const pessoas = await database.Pessoas.findAll();
+      return res.status(200).json(pessoas);
+    } catch (error) {
+      return res.status(500).json(error.message);
+    }
+  }
+
+  static async list(req, res) {
+    try {
+      const pessoas = await database.Pessoas.scope("todos").findAll();
       return res.status(200).json(pessoas);
     } catch (error) {
       return res.status(500).json(error.message);
@@ -131,11 +140,9 @@ class PessoaController {
       await database.Matriculas.restore({
         where: { id: Number(matriculaId), estudante_id: Number(estudanteId) },
       });
-      return res
-        .status(200)
-        .json({
-          mensagem: `Matricula com o id ${matriculaId} restaurado com sucesso`,
-        });
+      return res.status(200).json({
+        mensagem: `Matricula com o id ${matriculaId} restaurado com sucesso`,
+      });
     } catch (error) {
       return res.status(500).json(error.message);
     }
