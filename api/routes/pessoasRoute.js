@@ -10,6 +10,12 @@ router.post("/pessoas", PessoaController.register);
 router.put("/pessoas/:id", PessoaController.update);
 router.delete("/pessoas/:id", PessoaController.delete);
 router.post("/pessoas/:id/restaura", PessoaController.restore);
+router.get("/pessoas/:estudanteId/matricula", PessoaController.pegaMatricula);
+router.get(
+  "/pessoas/matricula/:turmaId/confirmadas",
+  PessoaController.pegaMatriculaPorTurma
+);
+router.get("/pessoas/matricula/lotada", PessoaController.pegaTurmasLotadas);
 
 router.get(
   "/pessoas/:estudanteId/matricula/:matriculaId",
