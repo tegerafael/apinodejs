@@ -16,6 +16,7 @@ router.get(
   PessoaController.pegaMatriculaPorTurma
 );
 router.get("/pessoas/matricula/lotada", PessoaController.pegaTurmasLotadas);
+router.post("/pessoas/:estudanteId/cancela", PessoaController.cancelaPessoa);
 
 router.get(
   "/pessoas/:estudanteId/matricula/:matriculaId",
